@@ -7,10 +7,10 @@ This is the fourth assignment for BIOL390: Reproducible Research in the summer o
 4) You are going to create your own dataset for this assignment.  
 	A) You will need to see 100 vehicles (observations), so head to the nearest parking lot!  
 	B) For each vehicle, you will need to record the following variables:  
-		1) Type (as a factor - e.g. Sedan, SUV, Pickup, Van, Truck, etc.)  
-		2) Make (as a factor - e.g. Ford, Honda, Chevy, etc.)  
-		3) Color (as a factor - e.g. Red, Green, Silver, etc.)  
-		4) Sticker (as a logical - e.g. T or F, TRUE or FALSE, 1 or 0)  
+			1) Type (as a factor - e.g. Sedan, SUV, Pickup, Van, Truck, etc.)  
+			2) Make (as a factor - e.g. Ford, Honda, Chevy, etc.)  
+			3) Color (as a factor - e.g. Red, Green, Silver, etc.)  
+			4) Sticker (as a logical - e.g. T or F, TRUE or FALSE, 1 or 0)  
 	C) Make your dataset in whatever you want (Notepad, Excel, etc.)  
 	D) Save your dataset as a csv file  
 	E) Put a copy of your dataset in your assignment 4 folder
