@@ -1,0 +1,58 @@
+---
+title: "Assignment-04"
+author: "YOUR NAME"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: html_document
+---
+
+<!-- (1) A setup chunk. Make sure that you have all needed packages installed -->
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+```
+   
+<!-- (2) You can leave this introduction as-is -->
+## Introduction  
+Based upon anecdotal evidence (personal experience), Dr. Franklund believes that there may be an association between the type of vehicle people drive with the liklihood that they will adorn that vehicle with window and/or bumper stickers. This brief project serves both to test that hypothesis and provide an opportunity to practice collecting and using "tidy" data.
+
+<!-- (3) Briefly describe what data you collected, how, when, and where you collected it, and the file name and format of your dataset. -->
+## Procedure
+
+
+<!-- (4) Insert an R chunk here to load your dataset into a tibble --> 
+
+
+## Results
+
+### Window/bumper sticker frequency compared to vehicle type
+<!-- (5) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by type -->
+
+
+<!-- (6) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
+
+
+<!-- (7) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car type. --> 
+
+### Window/bumper sticker frequency compared to vehicle make
+<!-- (8) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by make. -->
+
+
+<!-- (9) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
+
+
+<!-- (10) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car make. --> 
+
+### Window/bumper sticker frequency compared to vehicle color
+<!-- (11) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by color. -->
+
+
+<!-- (12) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
+
+
+<!-- (13) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car color. --> 
+
+
+
+## Conclusions
+<!-- (14) Wrap up your assignment with a brief discussion of what you found. Did you find any evidence to support Dr. Franklund's initial hypothesis? How do you interpret your findings? --> 
