@@ -16,7 +16,7 @@ genMake <- function() {
 		return(genType("Subaru"))
 	} else if(make < 40) {
 		return(genType("BMW"))
-	} else if(make < 47)╦ {
+	} else if(make < 47) {
 		return(genType("Honda"))
 	} else if(make < 60) {
 		return(genType("Buick"))
@@ -32,9 +32,9 @@ genMake <- function() {
 genType <- function(make) {
 	type <- sample(1:100, 1)
 	if(make == "Toyota") {
-		if(type < 70) {
+		if(type < 62) {
 			return(c(make, "Sedan", genSticker("Sedan")))
-		} else if(type < 78) {
+		} else if(type < 77) {
 			return(c(make, "Truck", genSticker("Truck")))
 		} else if(type < 90) {
 			return(c(make, "Van", genSticker("Van")))
@@ -42,21 +42,21 @@ genType <- function(make) {
 			return(c(make, "SUV", genSticker("SUV")))
 		}
 	} else if(make == "Nissan") {
-		if(type < 75) {
+		if(type < 64) {
 			return(c(make, "Sedan", genSticker("Sedan")))
 		} else {
 			return(c(make, "SUV", genSticker("SUV")))
 		}
 	} else if(make == "VW") {
-		if(type < 60) {
+		if(type < 50) {
 			return(c(make, "Sedan", genSticker("Sedan")))
-		} else if(type < 69) {
+		} else if(type < 74) {
 			return(c(make, "Van", genSticker("Van")))
 		} else {
 			return(c(make, "SUV", genSticker("SUV")))
 		}
 	} else if(make == "Subaru") {
-		if(type < 45) {
+		if(type < 30) {
 			return(c(make, "Sedan", genSticker("Sedan")))
 		} else if(type < 50) {
 			return(c(make, "Van", genSticker("Van")))
@@ -66,13 +66,13 @@ genType <- function(make) {
 			return(c(make, "SUV", genSticker("SUV")))
 		}
 	} else if(make == "BMW") {
-		if(type < 80) {
+		if(type < 75) {
 			return(c(make, "Sedan", genSticker("Sedan")))
 		} else {
 			return(c(make, "SUV", genSticker("SUV")))
 		}
 	} else if(make == "Honda") {
-		if(type < 65) {
+		if(type < 57) {
 			return(c(make, "Sedan", genSticker("Sedan")))
 		} else if(type < 72) {
 			return(c(make, "Truck", genSticker("Truck")))
@@ -80,23 +80,23 @@ genType <- function(make) {
 			return(c(make, "SUV", genSticker("SUV")))
 		}
 	} else if(make == "Buick") {
-		if(type < 60) {
+		if(type < 50) {
 			return(c(make, "Sedan", genSticker("Sedan")))
 		} else {
 			return(c(make, "SUV", genSticker("SUV")))
 		}
 	} else if(make == "Chevy") {
-		if(type < 35) {
+		if(type < 30) {
 			return(c(make, "Sedan", genSticker("Sedan")))
-		} else if(type < 65) {
+		} else if(type < 62) {
 			return(c(make, "SUV", genSticker("SUV")))
-		} else if(type < 72) {
+		} else if(type < 84) {
 			return(c(make, "Van", genSticker("Van")))
 		} else {
 			return(c(make, "Truck", genSticker("Truck")))
 		}
 	} else if(make == "Chrysler") {
-		if(type < 50) {
+		if(type < 40) {
 			return(c(make, "Sedan", genSticker("Sedan")))
 		} else {
 			return(c(make, "Van", genSticker("Van")))
@@ -137,13 +137,13 @@ genSticker <- function(type) {
 	boo <- sample(1:100, 1)
 	if(type == "Sedan")
 	{
-		if(boo < 30) {
+		if(boo < 16) {
 			return(TRUE)
 		} else {
 			return(FALSE)
 		}
 	} else if(type == "Truck") {
-		if(boo < 35) {
+		if(boo < 32) {
 			return(TRUE)
 		} else {
 			return(FALSE)
@@ -155,7 +155,7 @@ genSticker <- function(type) {
 			return(FALSE)
 		}
 	} else {
-		if(boo < 25) {
+		if(boo < 13) {
 			return(TRUE)
 		} else {
 			return(FALSE)
