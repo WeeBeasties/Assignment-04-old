@@ -1,58 +1,123 @@
 ---
 title: "Assignment-04"
-author: "YOUR NAME"
+author: "Mitch Lueken"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: html_document
 ---
 
-<!-- (1) A setup chunk. Make sure that you have all needed packages installed -->
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(kableExtra)
 ```
    
-<!-- (2) You can leave this introduction as-is -->
 ## Introduction  
+
 Based upon anecdotal evidence (personal experience), Dr. Franklund believes that there may be an association between the type of vehicle people drive with the liklihood that they will adorn that vehicle with window and/or bumper stickers. This brief project serves both to test that hypothesis and provide an opportunity to practice collecting and using "tidy" data.
 
-<!-- (3) Briefly describe what data you collected, how, when, and where you collected it, and the file name and format of your dataset. -->
+100 cars were surveyed from the local area, and their make, type, and color were recorded, as well as whether they had a bumper sticker or not. Alternatively, the code in Generator.Rmd created Data.csv using simulated data.
+
 ## Procedure
 
-
 <!-- (4) Insert an R chunk here to load your dataset into a tibble --> 
+```{r heyLookData, echo = FALSE, message = FALSE}
+mrTibbles <- read_csv("Data.csv")
 
+knitr::kable(mrTibbles %>% group_by(Make) %>% summarize(Number = n()) %>% arrange(desc(Number)), caption = "*Figure 1:* Vehicle Make Frequency") %>% kable_styling(full_width = FALSE, position = "float_left")
+
+knitr::kable(mrTibbles %>% group_by(Type) %>% summarize(Number = n()) %>% arrange(desc(Number)), caption = "*Figure 2:* Vehicle Type Frequency") %>% kable_styling(full_width = FALSE, position = "float_left")
+
+knitr::kable(mrTibbles %>% group_by(Color) %>% summarize(Number = n()) %>% arrange(desc(Number)), caption = "*Figure 3:* Vehicle Color Frequency")  %>% kable_styling(full_width = FALSE, position = "left")
+```
 
 ## Results
 
 ### Window/bumper sticker frequency compared to vehicle type
 <!-- (5) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by type -->
 
+```{r type, echo = FALSE, message = FALSE, fig.cap = "**Figure n:** Sticker Frequency by Vehicle Type"}
+mrTibbles %>%
+	select(Type, Sticker) %>%
+	group_by(Type) %>%
+	add_tally() %>%
+	filter(Sticker) %>%
+	add_tally(wt = Sticker) %>%
+	distinct() %>%
+	transmute(Type, SuperFreq = nn / n) %>%
+	ggplot() + geom_bar(aes(x = Type, y = SuperFreq), stat = "summary", fun = "mean") + ylim(0,1) + labs(x = "Vehicle Type", y = "Sticker Frequency")
+```
 
 <!-- (6) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
 
 
 <!-- (7) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car type. --> 
 
+```{r typeANOVA, echo = FALSE}
+bool <- as.numeric(mrTibbles$Sticker)
+bool
+#knitr::kable(anova(lm(bool ~ Sticker, data = mrTibbles)),
+#	digits = 3, 
+#	format = "html", 
+#	caption = "*Table 1:* One-way ANOVA analysis of ...",
+#	table.attr = "style='width:70%;'") %>%
+#kable_styling(position = "center")
+```
+
 ### Window/bumper sticker frequency compared to vehicle make
 <!-- (8) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by make. -->
 
+```{r make, echo = FALSE, message = FALSE, fig.cap = "**Figure n:** Sticker Frequency by Vehicle Make"}
+mrTibbles %>%
+	select(Make, Sticker) %>%
+	group_by(Make) %>%
+	add_tally() %>%
+	filter(Sticker) %>%
+	add_tally(wt = Sticker) %>%
+	distinct() %>%
+	transmute(Make, SuperFreq = nn / n) %>%
+	ggplot() + geom_bar(aes(x = Make, y = SuperFreq), stat = "summary", fun = "mean") + ylim(0,1) + labs(x = "Vehicle Make", y = "Sticker Frequency")
+```
 
 <!-- (9) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
 
 
 <!-- (10) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car make. --> 
 
+```{r makeANOVA, echo = FALSE}
+#knitr::kable(anova(lm(Make ~ Sticker, data = mrTibbles)),
+#	digits = 3, 
+#	format = "html", 
+#	caption = "<b>Table 2:</b> One-way ANOVA analysis of lateral plate numbers by genotype",
+#	table.attr = "style='width:70%;'") %>% kable_styling(position = "center")
+```
+
 ### Window/bumper sticker frequency compared to vehicle color
 <!-- (11) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by color. -->
 
+```{r color, echo = FALSE, message = FALSE, fig.cap = "**Figure n:** Sticker Frequency by Vehicle Color"}
+mrTibbles %>%
+	select(Color, Sticker) %>%
+	group_by(Color) %>%
+	add_tally() %>%
+	filter(Sticker) %>%
+	add_tally(wt = Sticker) %>%
+	distinct() %>%
+	transmute(Color, SuperFreq = nn / n) %>%
+	ggplot() + geom_bar(aes(x = Color, y = SuperFreq), stat = "summary", fun = "mean") + ylim(0,1) + labs(x = "Vehicle Color", y = "Sticker Frequency")
+```
 
 <!-- (12) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
 
 
 <!-- (13) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car color. --> 
 
-
+```{r colorANOVA, echo = FALSE}
+#knitr::kable(anova(lm(Color ~ Sticker, data = mrTibbles)),
+#	digits = 3, 
+#	format = "html", 
+#	caption = "<b>Table 2:</b> One-way ANOVA analysis of lateral plate numbers by genotype",
+#	table.attr = "style='width:70%;'") %>% kable_styling(position = "center")
+```
 
 ## Conclusions
 <!-- (14) Wrap up your assignment with a brief discussion of what you found. Did you find any evidence to support Dr. Franklund's initial hypothesis? How do you interpret your findings? --> 

@@ -1,0 +1,187 @@
+---
+title: "Generator"
+output: html_document
+---
+
+```{r inconspicuousRChunk, echo = FALSE, results = FALSE}
+genMake <- function() {
+	make <- sample(1:100, 1)
+	if(make < 15) {
+		return(genType("Toyota"))
+	} else if(make < 20) {
+		return(genType("Nissan"))
+	} else if(make < 30) {
+		return(genType("VW"))
+	} else if (make < 32) {
+		return(genType("Subaru"))
+	} else if(make < 40) {
+		return(genType("BMW"))
+	} else if(make < 47)╦ {
+		return(genType("Honda"))
+	} else if(make < 60) {
+		return(genType("Buick"))
+	} else if(make < 70) {
+		return(genType("Chevy"))
+	} else if(make < 82) {
+		return(genType("Chrysler"))
+	} else {
+		return(genType("Ford"))
+	}
+}
+
+genType <- function(make) {
+	type <- sample(1:100, 1)
+	if(make == "Toyota") {
+		if(type < 70) {
+			return(c(make, "Sedan", genSticker("Sedan")))
+		} else if(type < 78) {
+			return(c(make, "Truck", genSticker("Truck")))
+		} else if(type < 90) {
+			return(c(make, "Van", genSticker("Van")))
+		} else {
+			return(c(make, "SUV", genSticker("SUV")))
+		}
+	} else if(make == "Nissan") {
+		if(type < 75) {
+			return(c(make, "Sedan", genSticker("Sedan")))
+		} else {
+			return(c(make, "SUV", genSticker("SUV")))
+		}
+	} else if(make == "VW") {
+		if(type < 60) {
+			return(c(make, "Sedan", genSticker("Sedan")))
+		} else if(type < 69) {
+			return(c(make, "Van", genSticker("Van")))
+		} else {
+			return(c(make, "SUV", genSticker("SUV")))
+		}
+	} else if(make == "Subaru") {
+		if(type < 45) {
+			return(c(make, "Sedan", genSticker("Sedan")))
+		} else if(type < 50) {
+			return(c(make, "Van", genSticker("Van")))
+		} else if(type < 55) {
+			return(c(make, "Truck", genSticker("Truck")))
+		} else {
+			return(c(make, "SUV", genSticker("SUV")))
+		}
+	} else if(make == "BMW") {
+		if(type < 80) {
+			return(c(make, "Sedan", genSticker("Sedan")))
+		} else {
+			return(c(make, "SUV", genSticker("SUV")))
+		}
+	} else if(make == "Honda") {
+		if(type < 65) {
+			return(c(make, "Sedan", genSticker("Sedan")))
+		} else if(type < 72) {
+			return(c(make, "Truck", genSticker("Truck")))
+		} else {
+			return(c(make, "SUV", genSticker("SUV")))
+		}
+	} else if(make == "Buick") {
+		if(type < 60) {
+			return(c(make, "Sedan", genSticker("Sedan")))
+		} else {
+			return(c(make, "SUV", genSticker("SUV")))
+		}
+	} else if(make == "Chevy") {
+		if(type < 35) {
+			return(c(make, "Sedan", genSticker("Sedan")))
+		} else if(type < 65) {
+			return(c(make, "SUV", genSticker("SUV")))
+		} else if(type < 72) {
+			return(c(make, "Van", genSticker("Van")))
+		} else {
+			return(c(make, "Truck", genSticker("Truck")))
+		}
+	} else if(make == "Chrysler") {
+		if(type < 50) {
+			return(c(make, "Sedan", genSticker("Sedan")))
+		} else {
+			return(c(make, "Van", genSticker("Van")))
+		}
+	} else {
+		if(type < 30) {
+			return(c(make, "Sedan", genSticker("Sedan")))
+		} else if(type < 50) {
+			return(c(make, "SUV", genSticker("SUV")))
+		} else {
+			return(c(make, "Truck", genSticker("Truck")))
+		}
+	}
+}
+
+genColor <- function() {
+	color <- sample(1:100, 1)
+	if(color < 21) {
+		return("White")
+	} else if(color < 43) {
+		return("Grey")
+	} else if(color < 57) {
+		return("Black")
+	} else if(color < 68) {
+		return("Blue")
+	} else if(color < 79) {
+		return("Red")
+	} else if(color < 93) {
+		return("Brown")
+	} else if(color < 96) {
+		return("Yellow")
+	} else {
+		return("Green")
+	}
+}
+
+genSticker <- function(type) {
+	boo <- sample(1:100, 1)
+	if(type == "Sedan")
+	{
+		if(boo < 30) {
+			return(TRUE)
+		} else {
+			return(FALSE)
+		}
+	} else if(type == "Truck") {
+		if(boo < 35) {
+			return(TRUE)
+		} else {
+			return(FALSE)
+		}
+	} else if(type == "Van") {
+		if(boo < 40) {
+			return(TRUE)
+		} else {
+			return(FALSE)
+		}
+	} else {
+		if(boo < 25) {
+			return(TRUE)
+		} else {
+			return(FALSE)
+		}
+	}
+}
+
+genCar <- function() {
+	return(c(genMake(), genColor()))
+}
+
+genData <- function() {
+	dat <- list()
+	dat[[1]] <- c("Car Number", "Make", "Type", "Sticker", "Color")
+	i <- 2
+	while(i <= 101)
+	{
+		dat[[i]] <- c((i - 1), genCar())
+		i <- i + 1
+	}
+	return(dat)
+}
+
+outputData <- function(dat) {
+	write.table(t(as.data.frame(dat)), file = "Data.csv", row.names = FALSE, col.names = FALSE, sep = ",")
+}
+
+outputData(genData())
+```
