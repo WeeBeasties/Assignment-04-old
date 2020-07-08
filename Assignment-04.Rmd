@@ -1,6 +1,6 @@
 ---
 title: "Assignment-04"
-author: "YOUR NAME"
+author: "Jonathan Schuster"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: html_document
 ---
@@ -18,22 +18,37 @@ Based upon anecdotal evidence (personal experience), Dr. Franklund believes that
 
 <!-- (3) Briefly describe what data you collected, how, when, and where you collected it, and the file name and format of your dataset. -->
 ## Procedure
-
+This data set collected information (factorial, logical) from vehicles such as the type of vehicle, make of the vehicle, color, and whether there were stickers on the vehicle. The data was collected from my place of business's parking lot (Auto Repair) over several business days. The data is an excel file called "Cars coding" and is saved as a .csv file. 
 
 <!-- (4) Insert an R chunk here to load your dataset into a tibble --> 
+```{r excel file, include = TRUE, message = FALSE}
+data <- read.csv("Cars coding.csv")
+names(data) <- c("Type", "Make", "Color", "Sticker")
 
+```
 
 ## Results
+```{r remedy001}
+
+table <- yourTibble %>% group_by(variable) %>% summarize(Number = n()) %>% arrange(desc(Number))
+
+```
 
 ### Window/bumper sticker frequency compared to vehicle type
 <!-- (5) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by type -->
+```{r remedy001}
 
+
+```
 
 <!-- (6) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
 
 
 <!-- (7) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car type. --> 
+```{r ANOVA}
 
+
+```
 ### Window/bumper sticker frequency compared to vehicle make
 <!-- (8) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by make. -->
 
@@ -42,7 +57,10 @@ Based upon anecdotal evidence (personal experience), Dr. Franklund believes that
 
 
 <!-- (10) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car make. --> 
+```{r ANOVA2}
 
+
+```
 ### Window/bumper sticker frequency compared to vehicle color
 <!-- (11) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by color. -->
 
@@ -51,7 +69,10 @@ Based upon anecdotal evidence (personal experience), Dr. Franklund believes that
 
 
 <!-- (13) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car color. --> 
+```{r ANOVA3}
 
+
+```
 
 
 ## Conclusions
