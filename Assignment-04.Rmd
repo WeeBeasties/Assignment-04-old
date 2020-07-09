@@ -48,14 +48,14 @@ knitr::kable(krTibbles %>% group_by(Type) %>% summarize(Number = n()) %>% arrang
 
 ```{r type, echo = FALSE, message = FALSE, error = FALSE, fig.cap = "**Figure 1:** Window/Bumper Frequency by Vehicle Type", fig.align = "left", out.width = 683}
 krTibbles %>%
-	select(Type, window/bumper()) %>%
+	select(Type, window()) %>%
 	group_by(Type) %>%
 	add_tally() %>%
 	filter(window/bumper()) %>%
 	add_tally(wt = window/bumper) %>%
 	distinct() %>%
 	transmute(Type, SuperFreq = 100 * nn / n) %>%
-	ggplot() + geom_bar(aes(x = Type, y = SuperFreq), stat = "summary", fun = "mean", fill = c("#005333","#331166","#FF0000", "#664422")) + ylim(0,100) + labs(x = "Vehicle Type", y = "window/bumper Frequency (%)")
+	ggplot() + geom_bar(aes(x = Type, y = SuperFreq), stat = "summary", fun = "mean", fill = c("#005333","#331166","#FF0000", "#664422")) + ylim(0,100) + labs(x = "Vehicle Type", y = "window Frequency (%)")
 ```
 
 
