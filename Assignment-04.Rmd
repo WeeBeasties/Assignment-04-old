@@ -26,6 +26,7 @@ This data set collected information (factorial, logical) from vehicles such as t
 ```{r excel file, include = FALSE, message = FALSE}
 My_Cars <- read_csv("Cars coding.csv")
 names(My_Cars) <- c("Type", "Make", "Color", "Sticker")
+#mutate(My_Cars, Sticker = ifelse(Sticker == 0, "No", "Yes")) 
 
 ```
 
@@ -47,7 +48,7 @@ ggplot(My_Cars, aes(x=Type, y=Sticker)) + geom_bar(position = "dodge", stat = "s
 
 <!-- (7) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car type. --> 
 ```{r ANOVA1}
-knitr::kable(anova(lm(Type ~ Sticker, data = My_Cars)),
+knitr::kable(anova(lm(Sticker ~ Type, data = My_Cars)),
 			 digits = 3, 
 			 format = "html", 
 			 caption = "**Table 1:** One-way ANOVA analysis of Type by Sticker.",
@@ -67,7 +68,7 @@ ggplot(My_Cars, aes(x=Make, y=Sticker)) + geom_bar(position = "dodge", stat = "s
 
 <!-- (10) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car make. --> 
 ```{r ANOVA2, echo = FALSE}
-knitr::kable(anova(lm(Make ~ Sticker, data = My_Cars)),
+knitr::kable(anova(lm(Sticker ~ Make, data = My_Cars)),
 			 digits = 3, 
 			 format = "html", 
 			 caption = "**Table 2:** One-way ANOVA analysis of Make by Sticker.",
@@ -87,7 +88,7 @@ ggplot(My_Cars, aes(x=Color, y=Sticker)) + geom_bar(position = "dodge", stat = "
 
 <!-- (13) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car color. --> 
 ```{r ANOVA3, echo = FALSE}
-knitr::kable(anova(lm(Color ~ Sticker, data = My_Cars)),
+knitr::kable(anova(lm(Sticker ~ Color, data = My_Cars)),
 			 digits = 3, 
 			 format = "html", 
 			 caption = "**Table 3:** One-way ANOVA analysis of Color by Sticker.",
