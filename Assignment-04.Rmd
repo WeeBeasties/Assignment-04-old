@@ -6,11 +6,12 @@ output: html_document
 ---
 
 <!-- (1) A setup chunk. Make sure that you have all needed packages installed -->
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(kableExtra)
 library(ggplot2)
+library(knitr)
 ```
    
 <!-- (2) You can leave this introduction as-is -->
@@ -23,21 +24,21 @@ This data set collected information (factorial, logical) from vehicles such as t
 
 <!-- (4) Insert an R chunk here to load your dataset into a tibble --> 
 ```{r excel file, include = FALSE, message = FALSE}
-Cars <- read.csv("Cars coding.csv")
-names(Cars) <- c("Type", "Make", "Color", "Sticker")
+My_Cars <- read_csv("Cars coding.csv")
+names(My_Cars) <- c("Type", "Make", "Color", "Sticker")
 
 ```
 
 ## Results
 ```{r results, message=FALSE, echo=FALSE, fig.align='center', fig.cap="**Table 1:** Type of vehicle and number of cars with/without sticker"}
-table <- as_tibble(Cars) %>% group_by(Type,Sticker) %>% summarize(Number = n()) %>% arrange(desc(Number))
+table <- as_tibble(My_Cars) %>% group_by(Type,Sticker) %>% summarize(Number = n()) %>% arrange(desc(Number))
 knitr::kable(table) %>% kable_styling(full_width = F)
 ```
 
 ### Window/bumper sticker frequency compared to vehicle type
 <!-- (5) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by type -->
 ```{r typesticker, echo=FALSE}
-ggplot(Cars, aes(x=Type, y=Sticker)) + geom_bar(position = "dodge", stat = "summary", fun="mean", fill = "dodgerblue3")
+ggplot(My_Cars, aes(x=Type, y=Sticker)) + geom_bar(position = "dodge", stat = "summary", fun="mean", fill = "dodgerblue3")
 
 ```
 
@@ -46,13 +47,17 @@ ggplot(Cars, aes(x=Type, y=Sticker)) + geom_bar(position = "dodge", stat = "summ
 
 <!-- (7) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car type. --> 
 ```{r ANOVA1}
-
+knitr::kable(anova(lm(Type ~ Sticker, data = My_Cars)),
+			 digits = 3, 
+			 format = "html", 
+			 caption = "**Table 1:** One-way ANOVA analysis of Type by Sticker.",
+			 table.attr = "style='width:70%;'") %>% kable_styling(position = "center")
 
 ```
 ### Window/bumper sticker frequency compared to vehicle make
 <!-- (8) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by make. -->
 ```{r stickermake, fig.cap= "**Plot 2:** Sticker vs. Make", echo=FALSE, fig.align='center'}
-ggplot(Cars, aes(x=Make, y=Sticker)) + geom_bar(position = "dodge", stat = "summary", fun="mean", fill = "magenta4")
+ggplot(My_Cars, aes(x=Make, y=Sticker)) + geom_bar(position = "dodge", stat = "summary", fun="mean", fill = "magenta4")
 
 
 ```
@@ -61,15 +66,19 @@ ggplot(Cars, aes(x=Make, y=Sticker)) + geom_bar(position = "dodge", stat = "summ
 **Summary:** Above is a plot of the Make of vehicle against if the vehicle contained a sticker. Looking at the data we can see that mazdas had the highest percentage of vehicles containing a sticker followed by subaru. Looking below we can see an ANOVA analysis of the data.
 
 <!-- (10) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car make. --> 
-```{r ANOVA2}
-
+```{r ANOVA2, echo = FALSE}
+knitr::kable(anova(lm(Make ~ Sticker, data = My_Cars)),
+			 digits = 3, 
+			 format = "html", 
+			 caption = "**Table 2:** One-way ANOVA analysis of Make by Sticker.",
+			 table.attr = "style='width:70%;'") %>% kable_styling(position = "center")
 
 ```
 ### Window/bumper sticker frequency compared to vehicle color
 <!-- (11) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by color. -->
 
 ```{r Stickercolor, fig.cap= "**Plot 3:** Sticker vs. Color", echo=FALSE, fig.align='center'}
-ggplot(Cars, aes(x=Color, y=Sticker)) + geom_bar(position = "dodge", stat = "summary", fun="mean", fill = "olivedrab4")
+ggplot(My_Cars, aes(x=Color, y=Sticker)) + geom_bar(position = "dodge", stat = "summary", fun="mean", fill = "olivedrab4")
 
 ```
 
@@ -77,8 +86,12 @@ ggplot(Cars, aes(x=Color, y=Sticker)) + geom_bar(position = "dodge", stat = "sum
 **Summary:** Above is a plot of the Color on a vehicle against if the vehicle contained a sticker. Looking at the data we can see that brown vehicles had the highest percentage of stickers on them. Below is an one-way ANOVA analysis of the results.
 
 <!-- (13) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car color. --> 
-```{r ANOVA3}
-
+```{r ANOVA3, echo = FALSE}
+knitr::kable(anova(lm(Color ~ Sticker, data = My_Cars)),
+			 digits = 3, 
+			 format = "html", 
+			 caption = "**Table 3:** One-way ANOVA analysis of Color by Sticker.",
+			 table.attr = "style='width:70%;'") %>% kable_styling(position = "center")
 
 ```
 
