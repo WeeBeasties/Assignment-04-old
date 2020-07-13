@@ -31,8 +31,9 @@ Based upon anecdotal evidence (personal experience), Dr. Franklund believes that
 I observed 100 cars at my local Walmart in Saginaw, MI on July 2 , 2020 at 4:00pm. I took note of the make, type,color, and whether they had a bumper/window sticker.I wroe my observations down and transfer the data to excel, which was turn into a csv file.
 
 ```{r heyLookData, echo = FALSE, message = FALSE}
-krTibbles <- read_csv("data for assignment 4.csv")
+krTibbles <- read_csv("data4.csv")
 ```
+
 <!-- (4) Insert an R chunk here to load your dataset into a tibble --> 
 ## Results
 ```{r bobbyTables, echo = FALSE, message = FALSE}
@@ -42,17 +43,46 @@ knitr::kable(krTibbles %>% group_by(Make) %>% summarize(Number = n()) %>% arrang
 
 knitr::kable(krTibbles %>% group_by(Type) %>% summarize(Number = n()) %>% arrange(desc(Number)), caption = "**Table 3:** Vehicle Type")  %>% kable_styling(full_width = FALSE, position = "left")
 ```
-
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 ### Window/bumper sticker frequency compared to vehicle type
 <!-- (5) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by type -->
 
-```{r type, echo = FALSE, message = FALSE, error = FALSE, fig.cap = "**Figure 1:** Window/Bumper Frequency by Vehicle Type", fig.align = "left", out.width = 683}
+```{r type, echo = FALSE, message = FALSE, error = FALSE, fig.cap = "**Figure 1:** Sticker presence by Car Type", fig.align = "left", out.width = 683}
 krTibbles %>%
-	select(Type, window()) %>%
+	select(Type, `Sticker`) %>%
 	group_by(Type) %>%
 	add_tally() %>%
-	filter(window/bumper()) %>%
-	add_tally(wt = window/bumper) %>%
+	filter(`Sticker`) %>%
+	add_tally(wt = `Sticker`) %>%
 	distinct() %>%
 	transmute(Type, SuperFreq = 100 * nn / n) %>%
 	ggplot() + geom_bar(aes(x = Type, y = SuperFreq), stat = "summary", fun = "mean", fill = c("#005333","#331166","#FF0000", "#664422")) + ylim(0,100) + labs(x = "Vehicle Type", y = "window Frequency (%)")
@@ -60,29 +90,109 @@ krTibbles %>%
 
 
 <!-- (6) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
-
+The plot above showed that vans had the most presence of stickers. Following trucks,sedan, and SUV,in the order that SUV had the least bumper stickers. (Figure 1) The one way ANOVA analysis  did find the trend to be significant.(Table 4)
+</div>
+	
 
 <!-- (7) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car type. --> 
 
+```{r typeANOVA, echo = FALSE, message = FALSE}
+
+smsTibbles <- krTibbles %>%
+	select(Type, `Sticker`) %>%
+	group_by(Type)
+
+knitr::kable(anova(lm(`Sticker` ~ Type, data = smsTibbles)),
+	digits = 3, 
+	format = "html", 
+	caption = "**Table 4:** One-way ANOVA analysis of Sticker presence and Car Type", table.attr = "style='width:683px;'") %>%
+kable_styling(position = "left")
+```
 ### Window/bumper sticker frequency compared to vehicle make
 <!-- (8) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by make. -->
 
+```{r make, echo = FALSE, message = FALSE, fig.cap = "**Figure 2:** Sticker Presence by Car Make", fig.align = "left", out.width = 683}
+tidying <- function(`Sticker`, nn) {
+	count = 1
+	for(entry in nn) {
+		if(entry == 0) {
+			`Sticker`[[count]] = TRUE
+		}
+		count = count + 1
+	}
+	return(`Sticker`)
+}
+
+krTibbles %>%
+	select(Make, `Sticker`) %>%
+	group_by(Make) %>%
+	add_tally() %>%
+	add_tally(wt = `Sticker`) %>%
+	mutate(Sticker = tidying(`Sticker`, nn)) %>%
+	distinct() %>%
+	filter(`Sticker`) %>%
+	transmute(Make, SuperFreq = 100 * nn / n) %>%
+	ggplot() + geom_bar(aes(x = Make, y = SuperFreq), stat = "summary", fun = "mean", fill = c("#A3915F","#000000","#EDD11C", "#000000", "#A1E3BF", "#123AB3", "#FF0000", "#000000", "#000000", "#1FB521", "#BDAFB4", "#000000", "#000000", "#000000", "#000000", "#951EBD", "#E3891B")) + ylim(-0,100) + labs(x = "Car Make", y = "Sticker Presence (%)")
+```
 
 <!-- (9) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
 
+A few makes of car had a sticker presence of 0%, and while others was over 50% (Figure 2). Pontiacs and Sabaru showed the exact same pattern.The one way analysis had significant results.(Table 5)
 
 <!-- (10) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car make. --> 
 
+```{r makeANOVA, echo = FALSE}
+smsTibbles <- krTibbles %>%
+	select(Make, `Sticker`) %>%
+	group_by(Make)
+
+knitr::kable(anova(lm(`Sticker` ~ Make, data = smsTibbles)),
+	digits = 3, 
+	format = "html", 
+	caption = "**Table 5:** One-way ANOVA analysis of Sticker Presence and Car Make",
+	table.attr = "style='width:683px;'") %>%
+kable_styling(position = "left")
+```
+
 ### Window/bumper sticker frequency compared to vehicle color
-<!-- (11) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by color. -->
+<!-- (11) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by color. -
+
+
+
 
 
 <!-- (12) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
+```{r color, echo = FALSE, message = FALSE, fig.cap = "**Figure 3:** Sticker Presence by Car Color", fig.align = "left", out.width = 683}
+krTibbles %>%
+	select(Color, `Sticker`) %>%
+	group_by(Color) %>%
+	add_tally() %>%
+	filter(`Sticker`) %>%
+	add_tally(wt = `Sticker`) %>%
+	distinct() %>%
+	transmute(Color, SuperFreq = 100 * nn / n) %>%
+	ggplot() + geom_bar(aes(x = Color, y = SuperFreq), stat = "summary", fun = "mean", fill = 
+	c( "#2724A6", "#704D28", "#2A8014", "#999999", "#E3891B", "#FF0000", "#FFFFFF")) + ylim(0,100) + labs(x = "Car Color", y = "Sticker Presence (%)")
+```
+ 
+The orange cars exceed anyother color on this graph. (Figure 3). While blue and brown cars with sticker presence are about the same. The one way analysis found no significant trends.(Table 6) 
 
 
 <!-- (13) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car color. --> 
+```{r colorANOVA, echo = FALSE}
+smsTibbles <- krTibbles %>%
+	select(Color, `Sticker`) %>%
+	group_by(Color)
 
+knitr::kable(anova(lm(`Sticker` ~ Color, data = smsTibbles)),
+	digits = 3, 
+	format = "html", 
+	caption = "**Table 6:** One-way ANOVA analysis of Sticker Presence and Car Color",
+	table.attr = "style='width:683px;'") %>%
+kable_styling(position = "left")
+```
 
 
 ## Conclusions
 <!-- (14) Wrap up your assignment with a brief discussion of what you found. Did you find any evidence to support Dr. Franklund's initial hypothesis? How do you interpret your findings? --> 
+From the one way analyses there was a significant trend from the car make and type related to stickers. While the color one way analyses showed an non-significant trend. Maybe a larger sampple and more factor would would make this sample work for efficient. 
