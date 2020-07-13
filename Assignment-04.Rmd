@@ -26,6 +26,7 @@ This data set collected information (factorial, logical) from vehicles such as t
 ```{r excel file, include = FALSE, message = FALSE}
 My_Cars <- read_csv("Cars coding.csv")
 names(My_Cars) <- c("Type", "Make", "Color", "Sticker")
+#mutate(My_Cars, Sticker = ifelse(Sticker == 0, "No", "Yes")) 
 
 ```
 
@@ -46,8 +47,9 @@ ggplot(My_Cars, aes(x=Type, y=Sticker)) + geom_bar(position = "dodge", stat = "s
 **Summary:** Above is a plot of the type of vehicle against if the vehicle contained a sticker. Looking at the data we can see that minivans had the highest percentage of vehicles containing a sticker followed by trucks. Looking below we can see an ANOVA analysis of the data.
 
 <!-- (7) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car type. --> 
-```{r ANOVA1}
-knitr::kable(anova(lm(Type ~ Sticker, data = My_Cars)),
+
+```{r ANOVA1, echo = FALSE}
+knitr::kable(anova(lm(Sticker ~ Type, data = My_Cars)),
 			 digits = 3, 
 			 format = "html", 
 			 caption = "**Table 1:** One-way ANOVA analysis of Type by Sticker.",
@@ -67,7 +69,7 @@ ggplot(My_Cars, aes(x=Make, y=Sticker)) + geom_bar(position = "dodge", stat = "s
 
 <!-- (10) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car make. --> 
 ```{r ANOVA2, echo = FALSE}
-knitr::kable(anova(lm(Make ~ Sticker, data = My_Cars)),
+knitr::kable(anova(lm(Sticker ~ Make, data = My_Cars)),
 			 digits = 3, 
 			 format = "html", 
 			 caption = "**Table 2:** One-way ANOVA analysis of Make by Sticker.",
@@ -87,7 +89,7 @@ ggplot(My_Cars, aes(x=Color, y=Sticker)) + geom_bar(position = "dodge", stat = "
 
 <!-- (13) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car color. --> 
 ```{r ANOVA3, echo = FALSE}
-knitr::kable(anova(lm(Color ~ Sticker, data = My_Cars)),
+knitr::kable(anova(lm(Sticker ~ Color, data = My_Cars)),
 			 digits = 3, 
 			 format = "html", 
 			 caption = "**Table 3:** One-way ANOVA analysis of Color by Sticker.",
@@ -98,4 +100,4 @@ knitr::kable(anova(lm(Color ~ Sticker, data = My_Cars)),
 
 ## Conclusions
 <!-- (14) Wrap up your assignment with a brief discussion of what you found. Did you find any evidence to support Dr. Franklund's initial hypothesis? How do you interpret your findings? --> 
-I found that certain types of vehicles had a greater chance to contain a sticker (minivans). Additionally, I found that the make of the vehicle showed interesting results as well. It looked like people owning mazda or subaru had a higher percentage to place a sticker on the vehicle. Looking at these factors it seems that Dr. Franklund's hypothesis may be onto something. I'd have to agree that certain model vehicles showed higher amounts of stickers. 
+I found that certain types of vehicles had a greater chance to contain a sticker (minivans). Additionally, I found that the make of the vehicle showed interesting results as well. It looked like people owning mazda or subaru had a higher percentage to place a sticker on the vehicle. Looking at these factors it seems that Dr. Franklund's hypothesis may be onto something. I'd have to agree that certain model vehicles showed higher amounts of stickers. Looking at my F values both Type, and Color came close to a value of 1 and shows support with Dr. Franklund's hypothesis. 
