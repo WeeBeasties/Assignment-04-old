@@ -1,0 +1,101 @@
+﻿type,make,color,sticker
+sedan,bmw,black,0
+sedan,bmw,white,0
+suv,porshe,black,0
+truck,dodge,red,0
+suv,gmc,silver,0
+station wagon,subaru,silver,0
+suv,ford,silver,1
+suv,ford,green,0
+suv,oldsmobile,green,0
+sedan,toyota,silver,0
+truck,Chevrolet ,orange,0
+suv,mercury,grey,0
+suv,Chevrolet ,white,1
+truck,dodge,red,1
+station wagon,subaru,green,1
+sedan,subaru,grey,0
+minivan,dodge,blue,1
+suv,jeep,red,0
+suv,mercedes,black,0
+station wagon,volvo,silver,0
+sedan,honda,red,0
+sedan,mercury,green,0
+suv,jeep,grey,1
+truck,gmc,red,1
+suv,honda,grey,0
+truck,Chevrolet ,black,1
+suv,saturn,silver,1
+suv,gmc,white,0
+suv,toyota,black,0
+suv,jeep,red,0
+suv,kia,silver,0
+truck,ford,red,0
+suv,ford,blue,1
+truck,gmc,white,0
+suv,ford,grey,0
+suv,Chevrolet ,red,0
+suv,jeep,silver,1
+truck,ford,black,1
+truck,ford,grey,1
+sedan,tesla,black,0
+minivan,chrysler,red,0
+suv,subaru,blue,1
+suv,gmc,red,0
+suv,ford,blue,1
+sedan,mazda,silver,1
+sedan,Chevrolet ,tan,1
+sedan,nissan,black,0
+suv,gmc,white,0
+van,Chevrolet ,silver,0
+truck,Chevrolet ,tan,0
+minivan,honda,white,0
+suv,gmc,black,0
+sedan,ford,silver,0
+suv,gmc,brown,1
+suv,ford,black,0
+sedan,honda,grey,0
+sedan,Chevrolet ,blue,0
+sedan,ford,red,1
+truck,Chevrolet ,red,0
+truck,ford,red,1
+suv,ford,red,1
+truck,ford,tan,0
+suv,Chevrolet ,white,0
+suv,ford,white,0
+suv,nissan,white,1
+suv,Chevrolet ,red,0
+suv,Chevrolet ,black,0
+suv,gmc,silver,1
+truck,Chevrolet ,blue,0
+suv,jeep,black,0
+truck,dodge,white,0
+suv,honda,white,0
+sedan,toyota,black,0
+sedan,honda,grey,0
+truck ,gmc,silver,0
+minivan,chrysler,blue,1
+motorcycle,bmw,silver,0
+suv,Chevrolet ,blue,0
+van,ford,white,0
+suv,jeep,white,0
+truck,Chevrolet ,blue,1
+suv,ford,white,0
+sedan,toyota,silver,0
+truck ,nissan,grey,0
+sedan,Chevrolet ,black,0
+truck ,ford,grey,0
+truck,dodge,black,0
+suv,ford,silver,0
+sedan,ford,red,0
+truck,ford,red,1
+truck,Chevrolet ,red,1
+suv,Chevrolet ,blue,0
+truck,Chevrolet ,black,0
+suv,ford,black,0
+suv,jeep,black,0
+sedan,ford,grey,0
+suv,saturn,white,0
+sedan,toyota,white,0
+suv,ford,black,1
+suv,toyota,white,1
