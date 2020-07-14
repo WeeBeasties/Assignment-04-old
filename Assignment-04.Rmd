@@ -22,7 +22,6 @@ Based upon anecdotal evidence (personal experience), Dr. Franklund believes that
 
  <!-- (4) Insert an R chunk here to load your dataset into a tibble.  --> 
  
-
 ```{r import_dataset, echo = FALSE, message = FALSE}
 
 car_observations <- read_csv("~/Desktop/R.Research/Repro.Research/Assignment04/Assignment-04/car_observations.csv", 
@@ -31,8 +30,51 @@ car_observations <- read_csv("~/Desktop/R.Research/Repro.Research/Assignment04/A
  
 ## Results
 
+
+```{r tables, echo = FALSE, message = FALSE}
+knitr::kable(car_observations %>% group_by(make) %>% summarize(Number = n()) %>% arrange(desc(Number)), caption = "**Table 1:** Make of Car") %>% kable_styling(full_width = FALSE, position = "float_left")
+
+knitr::kable(car_observations %>% group_by(type) %>% summarize(Number = n()) %>% arrange(desc(Number)), caption = "**Table 2:** Type of Car") %>% kable_styling(full_width = FALSE, position = "float_left")
+
+knitr::kable(car_observations %>% group_by(color) %>% summarize(Number = n()) %>% arrange(desc(Number)), caption = "**Table 3:** Color of Car")  %>% kable_styling(full_width = FALSE, position = "left")
+
+
+```
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
 ### Window/bumper sticker frequency compared to vehicle type
 <!-- (5) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by type -->
+
+```{r remedy001}
+
+
+
+```
 
 
 <!-- (6) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 

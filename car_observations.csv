@@ -1,4 +1,4 @@
-car,type,make,color,sticker
+﻿car,type,make,color,sticker
 1,car,chevy,red,T
 2,car,volvo,silver,T
 3,SUV,volvo,blue,T
@@ -6,7 +6,7 @@ car,type,make,color,sticker
 5,van,chrysler,blue,F
 6,SUV,jeep,blue,T
 7,car,fiat,black,F
-8,SUV,jeep,Silver,T
+8,SUV,jeep,silver,T
 9,truck,dodge ,white,F
 10,car,mitsubishi ,black,F
 11,car,volkswagon,blue,T
@@ -94,7 +94,7 @@ car,type,make,color,sticker
 93,truck,honda,grey,F
 94,SUV,nissan,red,F
 95,car,hyundai,tan,F
-96,car,toyota,slilver,T
+96,car,toyota,silver,T
 97,car,saturn,black,F
 98,car,volkswagon,blue,T
 99,car,suburu,blue,T
