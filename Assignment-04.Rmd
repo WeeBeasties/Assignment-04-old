@@ -1,6 +1,6 @@
 ---
-title: "Assignment-04"
-author: "YOUR NAME"
+title: "Assignment 04"
+author: "Lauren Thomas"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: html_document
 ---
@@ -18,11 +18,17 @@ Based upon anecdotal evidence (personal experience), Dr. Franklund believes that
 
 <!-- (3) Briefly describe what data you collected, how, when, and where you collected it, and the file name and format of your dataset. -->
 ## Procedure
+100 cars were surveyed at random at a walmart parking lot on 7/7/20 at 5:50pm. Their make, type, color, and absense or presence of a sticker was recorded. This data was encoded into "car_observations.csv."
 
+ <!-- (4) Insert an R chunk here to load your dataset into a tibble.  --> 
+ 
 
-<!-- (4) Insert an R chunk here to load your dataset into a tibble --> 
+```{r import_dataset, echo = FALSE, message = FALSE}
 
-
+car_observations <- read_csv("~/Desktop/R.Research/Repro.Research/Assignment04/Assignment-04/car_observations.csv", 
+                             col_types = cols(car = col_integer()))
+```
+ 
 ## Results
 
 ### Window/bumper sticker frequency compared to vehicle type
