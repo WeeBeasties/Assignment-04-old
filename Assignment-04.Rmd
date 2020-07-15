@@ -70,17 +70,42 @@ knitr::kable(car_observations %>% group_by(color) %>% summarize(Number = n()) %>
 ### Window/bumper sticker frequency compared to vehicle type
 <!-- (5) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by type -->
 
-```{r remedy001}
-
+```{r sticker compared to type, echo = FALSE, message = FALSE, fig.cap = "**Figure 1:** Sticker Frequency compared to Type of Car", fig.align = "left"}
+car_observations %>%
+	select(type, sticker) %>%
+	group_by(type) %>%
+	add_tally() %>%
+	filter (sticker) %>%
+	add_tally(wt = sticker) %>%
+	distinct() %>%
+	transmute(type, SuperFreq = 100 * nn / n) %>%
+	ggplot() + geom_bar(aes(x = type, y = SuperFreq), stat = "summary", fun = "mean") + ylim(0,100) + labs(x = "type of car", y = "frequency of stickers (%)")
 
 
 ```
 
 
 <!-- (6) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
-
+Interestingly enough, the top type of car decorated the most with stickers is the car. In second place, comes the truck. The van and SUV are not too far behind. 
 
 <!-- (7) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car type. --> 
+
+```{r ANOVAtest, echo = FALSE, message = FALSE}
+sticker_type_car_observations <- car_observations %>%
+	select(type, sticker) %>%
+	group_by(type)
+
+knitr::kable(anova(lm(sticker ~ type, data = sticker_type_car_observations)),
+	digits = 3, 
+	format = "html", 
+	caption = "**Table 4:** One-way ANOVA analysis of Sticker Frequency and Car Type", table.attr = "style='width:683px;'") %>%
+kable_styling(position = "left")
+
+
+
+
+```
+
 
 ### Window/bumper sticker frequency compared to vehicle make
 <!-- (8) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by make. -->
