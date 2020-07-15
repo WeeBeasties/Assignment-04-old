@@ -105,10 +105,42 @@ kable_styling(position = "left")
 
 
 ```
-
+Te ANOVA test was used to determine whether or not there is any significant difference between these two variables; sticker frequency and type of car. 
 
 ### Window/bumper sticker frequency compared to vehicle make
 <!-- (8) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by make. -->
+
+```{r sticker compared to make, echo = FALSE, message = FALSE, fig.cap = "**Figure 2:** Sticker Presence and Type of Car", fig.align = "left", out.width = 683}
+
+tidying <- function(`Sticker`, nn) {
+	count = 1
+	for(entry in nn) {
+		if(entry == 0) {
+			`Sticker`[[count]] = TRUE
+		}
+		count = count + 1
+	}
+	return(`Sticker`)
+}
+
+car_observations %>%
+	select(make, sticker) %>%
+	group_by(make) %>%
+	add_tally() %>%
+	add_tally(wt = sticker) %>%
+	mutate(sticker = tidying(sticker, nn)) %>%
+	distinct() %>%
+	filter(sticker) %>%
+	transmute(make, SuperFreq = 100 * nn / n) %>%
+	ggplot() + geom_bar(aes(x = make, y = SuperFreq), stat = "summary", fun = "mean") + ylim(-0, 100) + labs(x = "Make of Car", y = "Sticker Frequency (%)")
+
+
+
+
+```
+
+
+
 
 
 <!-- (9) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
