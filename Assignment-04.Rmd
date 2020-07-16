@@ -18,7 +18,7 @@ Based upon anecdotal evidence (personal experience), Dr. Franklund believes that
 
 <!-- (3) Briefly describe what data you collected, how, when, and where you collected it, and the file name and format of your dataset. -->
 ## Procedure
-100 cars were surveyed at random at a walmart parking lot on 7/7/20 at 5:50pm. Their make, type, color, and absense or presence of a sticker was recorded. This data was encoded into "car_observations.csv."
+100 cars were surveyed at random at a walmart parking lot in Newport News, Virginia on 7/7/20 at 5:50pm. Their make, type, color, and absense or presence of a sticker was recorded. This data was encoded into "car_observations.csv."
 
  <!-- (4) Insert an R chunk here to load your dataset into a tibble.  --> 
  
@@ -105,7 +105,7 @@ knitr::kable(anova(lm(sticker ~ type, data = sticker_type_car_observations)),
 kable_styling(position = "left")
 
 ```
-The ANOVA test was used to determine whether or not there is any significant difference between these two variables; sticker frequency and type of car. 
+The ANOVA test was used to determine whether or not there is any significant difference between these two variables; sticker frequency and type of car. My F value was larger than the 0.5 cutoff, meaning there is no significant difference between sticker frequency and type of car. 
 <br/>
 <br/>
 <br/>
@@ -144,7 +144,7 @@ car_observations %>%
 ```
 
 <!-- (9) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
-The top 4 car makes with 100% sticker frequency was Audi, Mercedes, Suburu, and Volvo. These cars adorn stickers at a much higher rate than other makes of cars, as you can see from figure 2. 
+The top 4 car makes with 100% sticker frequency was Audi, Mercedes, Suburu, and Volvo. These cars adorn stickers at a much higher rate than other makes of cars, as you can see in figure 2. 
 <br/>
 <br/>
 <br/>
@@ -169,13 +169,9 @@ kable_styling(position = "left")
 
 ```
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+Table 5 indicates there is no significant difference between sticker frequency and the make of car. This means that any difference between the two is purely because of chance and that thhere isnt an underlying reason.
+
+
 ### Window/bumper sticker frequency compared to vehicle color
 <!-- (11) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by color. -->
 
@@ -197,7 +193,7 @@ car_observations %>%
 
 
 <!-- (12) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
-adsfasdfasdfasdf
+The color that's adorned with the most stickers is blue. Green, grey, red, and silver all have the same amount of stickers. Overall, it doesn't seem to indicate that there is any color that would make someone want to put stickers on their vehicle more; they're all fairly close to one another in sticker frequency.
 
 
 <!-- (13) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car color. --> 
@@ -218,6 +214,8 @@ kable_styling(position = "left")
 
 
 ```
+Table 6 shows the F value indicates that there is no significant difference between sticker frequency and color of car. Any difference in the two observations is due to chance and not soome other underlying factor.
+
 <br/>
 <br/>
 <br/>
@@ -226,3 +224,4 @@ kable_styling(position = "left")
 
 ## Conclusions
 <!-- (14) Wrap up your assignment with a brief discussion of what you found. Did you find any evidence to support Dr. Franklund's initial hypothesis? How do you interpret your findings? --> 
+Dr. Franklund believes that there may be an association between the type of vehicle people drive with the liklihood that they will adorn that vehicle with window and/or bumper stickers. I then looked at frequency of sticker attachment compared to type of car, make of car, and color of car. Graphs were created with the data I collected. Then, ANOVA tests were ran for each comparison. In all cases, there was no significant difference between tthe two variables. This means that there was no underlying reason why the values are what they are; it was all due to chance. Because of this, I fail to reject Dr. Franklund's hypothesis. More testing is needed to further investigate the hypothesis in question. 
