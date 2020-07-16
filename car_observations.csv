@@ -1,0 +1,101 @@
+﻿car,type,make,color,sticker
+1,car,chevy,red,T
+2,car,volvo,silver,T
+3,SUV,volvo,blue,T
+4,car,chevy,blue,T
+5,van,chrysler,blue,F
+6,SUV,jeep,blue,T
+7,car,fiat,black,F
+8,SUV,jeep,silver,T
+9,truck,dodge ,white,F
+10,car,mitsubishi ,black,F
+11,car,volkswagon,blue,T
+12,car,honda,silver,F
+13,car,ford,black,T
+14,SUV,mercedes,blue,T
+15,truck,ford,white,T
+16,SUV,mitsubishi ,red,T
+17,car,cadillac,white,T
+18,SUV,chevy,black,F
+19,SUV,ford,grey,F
+20,SUV,nissan,white,F
+21,truck,ford,white,T
+22,car,cadillac,silver,F
+23,car,toyota,silver,F
+24,car,nissan,white,T
+25,car,chevy,white,T
+26,car,volkswagon,black,T
+27,SUV,cadillac,black,F
+28,car,honda,white,F
+29,car,chevy,red,F
+30,SUV,toyota,black,F
+31,car,ford,black,T
+32,car,honda,red,T
+33,car,ford,blue,T
+34,car,honda,black,F
+35,car,ford,white,F
+36,car,ford,white,F
+37,car,ford,white,T
+38,car,BMW,white ,F
+39,car,toyota,white,F
+40,SUV,honda,grey,F
+41,truck,dodge,black,T
+42,car,hyundai,brown,F
+43,SUV,jeep,white,F
+44,car,pontiac,red,F
+45,truck,chevy,red,F
+46,truck,chevy,white,F
+47,car,chevy,white,T
+48,car,toyota,white,F
+49,truck,dodge,grey,T
+50,SUV,jeep,red,T
+51,car,kia ,black ,F 
+52,car,nissan,tan,F
+53,car,toyota,white,F
+54,car,nissan,grey,T
+55,SUV,honda,black,T
+56,car,chevy,blue,F
+57,car,toyota,white,F
+58,car,volkswagon,black,F
+59,truck,chevy,grey,T
+60,car,BMW ,black,T
+61,SUV,hyundai,white,T
+62,car,ford,blue,T
+63,car,nissan,grey,T
+64,van,kia ,black,T
+65,SUV,toyota,tan,T
+66,van,ford,white,F
+67,van,dodge,black,T
+68,SUV,jeep,white,F
+69,car,volkswagon,tan,T
+70,car,honda,black,F
+71,car,honda,grey,F
+72,car,lexus,black,F
+73,car,chevy,black,T
+74,car,chevy,green,F
+75,car,audi,white,T
+76,car,toyota,green,T
+77,car,kia ,black,T
+78,car,toyota,blue,F
+79,SUV,toyota,tan,F
+80,car,nissan,red,T
+81,van,ford,white,F
+82,SUV,dodge ,black,F
+83,car,nissan,blue,F
+84,SUV,cadillac,black,F
+85,car,BMW,white,F
+86,SUV,tesla,blue,F
+87,car,tesla,white,F
+88,truck,dodge,blue,F
+89,SUV,dodge ,white,T
+90,truck,GMC,white,F
+91,SUV,jeep,blue,F
+92,truck,ford,white,F
+93,truck,honda,grey,F
+94,SUV,nissan,red,F
+95,car,hyundai,tan,F
+96,car,toyota,silver,T
+97,car,saturn,black,F
+98,car,volkswagon,blue,T
+99,car,suburu,blue,T
+100,SUV,chevy,red,F
