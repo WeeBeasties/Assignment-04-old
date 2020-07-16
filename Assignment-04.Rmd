@@ -110,6 +110,8 @@ The ANOVA test was used to determine whether or not there is any significant dif
 <br/>
 <br/>
 <br/>
+<br/>
+<br/>
 
 ### Window/bumper sticker frequency compared to vehicle make
 <!-- (8) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by make. -->
@@ -170,7 +172,12 @@ kable_styling(position = "left")
 ```
 
 Table 5 indicates there is no significant difference between sticker frequency and the make of car. This means that any difference between the two is purely because of chance and that thhere isnt an underlying reason.
-
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 ### Window/bumper sticker frequency compared to vehicle color
 <!-- (11) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by color. -->
