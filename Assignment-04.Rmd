@@ -21,7 +21,7 @@ Based upon anecdotal evidence (personal experience), Dr. Franklund believes that
 I went outside in my apartment complex and walked around the parking lot to collect the data. It was around 6 at night when I collected the data. I wrote the data in an excel file I called Car Data. I then converted the file to csv file.
 
 <!-- (4) Insert an R chunk here to load your dataset into a tibble --> 
-```{r}
+```{r,echo=FALSE}
 read.csv("CarInfo.csv")
 ```
 
@@ -30,7 +30,7 @@ read.csv("CarInfo.csv")
 
 ### Window/bumper sticker frequency compared to vehicle type
 <!-- (5) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by type -->
-```{r,fig.align='center',fig.cap=("__Figure 1__:Type vs Sticker Bar Plot")}
+```{r,message=FALSE,echo=FALSE,fig.align='center',fig.cap=("__Figure 1__:Type vs Sticker Bar Plot")}
 by_Sticker_Type <- read.csv("CarInfo.csv") %>% group_by(Sticker,Type) %>% summarize(Number = n()) %>% arrange(desc(Number))
 knitr::kable(by_Sticker_Type) %>% kable_styling(full_width = F)
 ggplot(by_Sticker_Type, aes(x=Type, y=Sticker))+ geom_bar(position = "dodge", stat = "summary", fun="mean")
@@ -40,7 +40,7 @@ The plot above shows shows how often cars of a certain type (Trucks,sedans etc.)
 
 <!-- (6) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
 
-```{r}
+```{r,echo=FALSE}
 knitr::kable(anova(lm(Sticker ~ Type, data = read.csv("CarInfo.csv"))),
 			 digits = 3, 
 			 format = "html", 
@@ -52,7 +52,7 @@ knitr::kable(anova(lm(Sticker ~ Type, data = read.csv("CarInfo.csv"))),
 
 ### Window/bumper sticker frequency compared to vehicle make
 <!-- (8) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by make. -->
-```{r,fig.align='center',fig.cap=("Figure 2: Make vs Sticker Plot")}
+```{r,message=FALSE,echo=FALSE,fig.align='center',fig.cap=("Figure 3: Make vs Sticker Plot")}
 by_Sticker_Make <- read.csv("CarInfo.csv") %>% group_by(Sticker,Make) %>% summarize(Number = n()) %>% arrange(desc(Number))
 knitr::kable(by_Sticker_Make) %>% kable_styling(full_width = F)
 ggplot(by_Sticker_Make, aes(x=Make, y=Sticker))+geom_bar(position = "dodge", stat = "summary", fun="mean")
@@ -61,7 +61,7 @@ ggplot(by_Sticker_Make, aes(x=Make, y=Sticker))+geom_bar(position = "dodge", sta
 The plot above shows Car Make vs Sticker. Below is an ANOVA anylysis of the same information.
 <!-- (9) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
 
-```{r}
+```{r,echo=FALSE}
 knitr::kable(anova(lm(Sticker ~ Make, data = read.csv("CarInfo.csv"))),
 			 digits = 3, 
 			 format = "html", 
@@ -73,14 +73,21 @@ knitr::kable(anova(lm(Sticker ~ Make, data = read.csv("CarInfo.csv"))),
 
 ### Window/bumper sticker frequency compared to vehicle color
 <!-- (11) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by color. -->
-```{r,fig.align='center',fig.cap=("Color vs Sticker Plot")}
+```{r,message=FALSE,echo=FALSE,fig.align='center',fig.cap=("__Figure 5__:Color vs Sticker Plot")}
 by_Sticker_Color <- read.csv("CarInfo.csv") %>% group_by(Sticker,Color) %>% summarize(Number = n()) %>% arrange(desc(Number))
 knitr::kable(by_Sticker_Color) %>% kable_styling(full_width = F)
 ggplot(by_Sticker_Color, aes(x=Color, y=Sticker))+ geom_bar(position = "dodge", stat = "summary", fun="mean")
 ```
-This plot compared car color with having a sticker or not. In my finding red cars were the most likely to have stickers.Below is an ANOVa analysis of that information.
+This plot compared car color with having a sticker or not. In my finding white cars were the most likely to have stickers.Below is an ANOVa analysis of that information.
 
 <!-- (12) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
+```{r,echo=FALSE}
+knitr::kable(anova(lm(Sticker ~ Color, data = read.csv("CarInfo.csv"))),
+			 digits = 3, 
+			 format = "html", 
+			 caption = "__Figure 6__: Color vs Sticker Anova Analysis",
+			 table.attr = "style='width:70%;'") %>% kable_styling(position = "center")
+```
 
 
 <!-- (13) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car color. --> 
@@ -89,4 +96,4 @@ This plot compared car color with having a sticker or not. In my finding red car
 
 ## Conclusions
 <!-- (14) Wrap up your assignment with a brief discussion of what you found. Did you find any evidence to support Dr. Franklund's initial hypothesis? How do you interpret your findings? --> 
-I didn't find any conclusive data that one's type of car correlates with them having a sticker. But from the data I collected Vans are much more like to have stickers on them then the other types. I think for more conslusive data I would need to see 25 vans,sedans, trucks,SuV's, etc and compare how many of each had stickers on them.
+I didn't find any conclusive data that one's type of car correlates with them having a sticker. But from the data I collected Vans are much more like to have stickers on them then the other types. I think for more conclusive data I would need to see 25 vans,sedans, trucks,SuV's, etc and compare how many of each had stickers on them. The p value from my ANoVA analysis does give indication to reject the null hypothesis.
