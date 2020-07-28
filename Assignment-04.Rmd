@@ -36,7 +36,7 @@ knitr::kable(by_Sticker_Type) %>% kable_styling(full_width = F)
 ggplot(by_Sticker_Type, aes(x=Type, y=Sticker))+ geom_bar(position = "dodge", stat = "summary", fun="mean")
 ```
 
-The plot above shows shows how often cars of a certain type (Trucks,sedans etc.) had stickers on a window or a bumper. Below is an ANOVA analysis of those findings.
+The plot above shows shows how often cars of a certain type (Trucks,sedans etc.) had stickers on a window or a bumper. Sedans had the most stickers with 13. Below is an ANOVA analysis of those findings.
 
 <!-- (6) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
 
@@ -58,7 +58,7 @@ knitr::kable(by_Sticker_Make) %>% kable_styling(full_width = F)
 ggplot(by_Sticker_Make, aes(x=Make, y=Sticker))+geom_bar(position = "dodge", stat = "summary", fun="mean")
 ```
 
-The plot above shows Car Make vs Sticker. Below is an ANOVA anylysis of the same information.
+The plot above shows Car Make vs Sticker. Ford and Honda tied for the most stickers, with 5 each.  Below is an ANOVA anylysis of the same information.
 <!-- (9) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
 
 ```{r,echo=FALSE}
@@ -78,7 +78,7 @@ by_Sticker_Color <- read.csv("CarInfo.csv") %>% group_by(Sticker,Color) %>% summ
 knitr::kable(by_Sticker_Color) %>% kable_styling(full_width = F)
 ggplot(by_Sticker_Color, aes(x=Color, y=Sticker))+ geom_bar(position = "dodge", stat = "summary", fun="mean")
 ```
-This plot compared car color with having a sticker or not. In my finding white cars were the most likely to have stickers.Below is an ANOVa analysis of that information.
+This plot compared car color with having a sticker or not. In my findings white cars were the most likely to have stickers.Below is an ANOVa analysis of that information.
 
 <!-- (12) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
 ```{r,echo=FALSE}
