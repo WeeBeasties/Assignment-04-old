@@ -1,6 +1,6 @@
 ---
 title: "Assignment-04"
-author: "YOUR NAME"
+author: "Arthur Moore"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: html_document
 ---
@@ -17,16 +17,24 @@ library(kableExtra)
 Based upon anecdotal evidence (personal experience), Dr. Franklund believes that there may be an association between the type of vehicle people drive with the liklihood that they will adorn that vehicle with window and/or bumper stickers. This brief project serves both to test that hypothesis and provide an opportunity to practice collecting and using "tidy" data.
 
 <!-- (3) Briefly describe what data you collected, how, when, and where you collected it, and the file name and format of your dataset. -->
-## Procedure
-
+## Procedure  
+I went outside in my apartment complex and walked around the parking lot to collect the data. It was around 6 at night when I collected the data. I wrote the data in an excel file I called Car Data. I then converted the file to csv file.
 
 <!-- (4) Insert an R chunk here to load your dataset into a tibble --> 
+```{r}
+read.csv("CarInfo.csv")
+```
 
 
 ## Results
 
 ### Window/bumper sticker frequency compared to vehicle type
 <!-- (5) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by type -->
+```{r,fig.align='center',fig.cap=("__Figure 1__:Type vs Sticker Bar Plot")}
+by_Sticker_Type <- read.csv("CarInfo.csv") %>% group_by(Sticker,Type) %>% summarize(Number = n()) %>% arrange(desc(Number))
+knitr::kable(by_Sticker_Type) %>% kable_styling(full_width = F)
+ggplot(by_Sticker_Type, aes(x=Type, y=Sticker))+ geom_bar(position = "dodge", stat = "summary", fun="mean")
+```
 
 
 <!-- (6) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
