@@ -36,6 +36,7 @@ knitr::kable(by_Sticker_Type) %>% kable_styling(full_width = F)
 ggplot(by_Sticker_Type, aes(x=Type, y=Sticker))+ geom_bar(position = "dodge", stat = "summary", fun="mean")
 ```
 
+The plot above shows shows how often cars of a certain type (Trucks,sedans etc.) had stickers on a window or a bumper. Below is an ANOVA analysis of those findings.
 
 <!-- (6) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
 
@@ -44,6 +45,11 @@ ggplot(by_Sticker_Type, aes(x=Type, y=Sticker))+ geom_bar(position = "dodge", st
 
 ### Window/bumper sticker frequency compared to vehicle make
 <!-- (8) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by make. -->
+```{r}
+by_Sticker_Make <- read.csv("CarInfo.csv") %>% group_by(Sticker,Make) %>% summarize(Number = n()) %>% arrange(desc(Number))
+knitr::kable(by_Sticker_Make) %>% kable_styling(full_width = F)
+ggplot(by_Sticker_Make, aes(x=Make, y=Sticker))+geom_bar(position = "dodge", stat = "summary", fun="mean")
+```
 
 
 <!-- (9) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
