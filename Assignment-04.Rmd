@@ -1,58 +1,69 @@
 ---
 title: "Assignment-04"
-author: "YOUR NAME"
+author: "Monica Pittiglio"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
-output: html_document
+output: html_document 
 ---
 
-<!-- (1) A setup chunk. Make sure that you have all needed packages installed -->
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(kableExtra)
+library(readr)
 ```
    
-<!-- (2) You can leave this introduction as-is -->
 ## Introduction  
 Based upon anecdotal evidence (personal experience), Dr. Franklund believes that there may be an association between the type of vehicle people drive with the liklihood that they will adorn that vehicle with window and/or bumper stickers. This brief project serves both to test that hypothesis and provide an opportunity to practice collecting and using "tidy" data.
 
-<!-- (3) Briefly describe what data you collected, how, when, and where you collected it, and the file name and format of your dataset. -->
 ## Procedure
+I recorded the type, make, color, and stickers from 100 cars near my home. Data was taken on 7/27/2020 from 4 - 5 pm at the Forum Fitzsimons parking garage in Aurora, CO. The data is recorded in a .csv file called "Cars."
 
 
-<!-- (4) Insert an R chunk here to load your dataset into a tibble --> 
-
+```{r, echo = FALSE, include = FALSE}
+Cars <- read_csv("Cars.csv")
+```
 
 ## Results
 
 ### Window/bumper sticker frequency compared to vehicle type
-<!-- (5) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by type -->
+```{r, echo = FALSE}
+ggplot(Cars, aes(x = Sticker, fill = Type)) + 
+  geom_bar(position = "dodge")
+```
 
+No vehicle type had more observations with stickers than without - vans came the closest to breaking this rule, as there were two in this data set; one with a sticker, and one without. Trucks came the next closest, followed by SUVs and finally sedans, which had the largest gap in addition to the most observations. There was one sports car in this data set - it did not have stickers.
 
-<!-- (6) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
-
-
-<!-- (7) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car type. --> 
+```{r, echo = FALSE}
+type.aov <- aov(Sticker ~ Type, data = Cars)
+summary(type.aov)
+```
 
 ### Window/bumper sticker frequency compared to vehicle make
-<!-- (8) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by make. -->
+```{r, echo = FALSE}
+ggplot(Cars, aes(x = Sticker, fill = Make)) + 
+  geom_bar(position = "dodge")
+```
 
+Every observed Subaru had stickers on it. Besides that, Chevrolet was the only other make that had more stickered observations than not. Mercedes-Benz had two observations in the data set, one with stickers and one without. None of the BMWs, Kias, or Volvos in the data set had stickers. Ford had the largest difference between number of stickered and non-stickered observations.
 
-<!-- (9) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
+```{r, echo = FALSE}
+make.aov <- aov(Sticker ~ Make, data = Cars)
+summary(make.aov)
+```
 
-
-<!-- (10) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car make. --> 
 
 ### Window/bumper sticker frequency compared to vehicle color
-<!-- (11) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by color. -->
+```{r, echo = FALSE}
+ggplot(Cars, aes(x = Sticker, fill = Color)) + 
+  geom_bar(position = "dodge")
+```
 
+There was one green vehicle in the data set, and it had a sticker, making green the only color to have more stickered observations than non-stickered. Orange and brown also had one observation each, both of which did not have stickers. Black had the most observations and the largest gap between number of stickered and non-stickered vehicles.
 
-<!-- (12) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
-
-
-<!-- (13) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car color. --> 
-
-
+```{r, echo = FALSE}
+color.aov <- aov(Sticker ~ Color, data = Cars)
+summary(color.aov)
+```
 
 ## Conclusions
-<!-- (14) Wrap up your assignment with a brief discussion of what you found. Did you find any evidence to support Dr. Franklund's initial hypothesis? How do you interpret your findings? --> 
+From the collected data, it appears that Subaru and Chevrolet owners are more likely than not to adorn their vehicle with stickers, while BMW, Kia, and Volvo owners seem to avoid it. The data also supports the idea that sports car owners and owners of brown or orange vehicles are less inclined to sticker up their vehicles, while owners of green vehicles are more likely to add stickers - however, more data will have to be collected for these claims to be solidified. An overall trend shows that less people sticker their vehicles overall no matter whether the data is sorted by make, type, or color.
