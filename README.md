@@ -11,7 +11,6 @@ This is the fourth assignment for BIOL390: Reproducible Research in the summer o
        2) **Make** (as a factor - e.g. Ford, Honda, Chevy, etc.)  
        3) **Color** (as a factor - e.g. Red, Green, Silver, etc.)  
        4) **Sticker** (as a logical - e.g. T or F, TRUE or FALSE, 1 or 0)  
- 
     C) Make your dataset in whatever you want (Notepad, Excel, etc.)  
     D) Save your dataset as a csv file  
     E) Put a copy of your dataset in your assignment 4 folder  
