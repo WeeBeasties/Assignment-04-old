@@ -74,13 +74,13 @@ ggplot(table2, aes(x=Make, y=Number, z = Sticker, fill = Sticker)) +
 
 <!-- (9) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
 
-Based on the figure above and the ANOVA analysis below, there does 
+Based on the figure above and the ANOVA analysis below, it appears there may be a slight significant correlation  between vehicle make and whether or not the vehicle has a sticker. Toyotas, Jeeps, VWs, and Subarus had high percentages of vehicles with stickers, while certain makes like Audi, BMW, Cadillac, and Lexus amongst others had none. 
 
 
 <!-- (10) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car make. --> 
 
 ```{r, echo=FALSE}
-anova_one_way_make <- aov(Sticker ~ Make, Cars_Info)
+anova_one_way_make <- aov(Sticker ~ Make, table2)
 summary(anova_one_way_make)
 ```
 
@@ -104,11 +104,11 @@ ggplot(table_3, aes(x=Color, y= Number, z = Sticker, fill = Sticker)) +
 
 
 <!-- (12) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
-
+When cmparing vehicle color to whether or not the vehicle has stickers, there does not seem to be a significant correlation.
 
 <!-- (13) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car color. --> 
 ```{r, echo=FALSE}
-anova_one_way_color <- aov(Sticker ~ Number, table_3)
+anova_one_way_color <- aov(Number ~ Sticker, table_3)
 summary(anova_one_way_color)
 ```
 

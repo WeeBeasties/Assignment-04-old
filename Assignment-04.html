@@ -930,11 +930,11 @@ FALSE
 </p>
 </div>
 <!-- (9) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. -->
-<p>Based on the figure above and the ANOVA analysis below, there does</p>
+<p>Based on the figure above and the ANOVA analysis below, it appears there may be a slight significant correlation between vehicle make and whether or not the vehicle has a sticker. Toyotas, Jeeps, VWs, and Subarus had high percentages of vehicles with stickers, while certain makes like Audi, BMW, Cadillac, and Lexus amongst others had none.</p>
 <!-- (10) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car make. -->
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
-## Make        21  4.741  0.2258   1.176  0.295
-## Residuals   78 14.969  0.1919</code></pre>
+## Make        21  2.719  0.1295   0.259  0.996
+## Residuals   10  5.000  0.5000</code></pre>
 </div>
 <div id="windowbumper-sticker-frequency-compared-to-vehicle-color" class="section level3">
 <h3>Window/bumper sticker frequency compared to vehicle color</h3>
@@ -1209,10 +1209,11 @@ TRUE
 </p>
 </div>
 <!-- (12) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. -->
+<p>When cmparing vehicle color to whether or not the vehicle has stickers, there does not seem to be a significant correlation.</p>
 <!-- (13) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car color. -->
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
-## Number       1  0.738  0.7380    3.13 0.0921 .
-## Residuals   20  4.717  0.2358                 
+## Sticker      1   62.4   62.44    3.13 0.0921 .
+## Residuals   20  399.0   19.95                 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
