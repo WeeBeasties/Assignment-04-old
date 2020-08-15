@@ -1,6 +1,6 @@
 ---
 title: "Assignment-04"
-author: "YOUR NAME"
+author: "Bethany Riess"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: html_document
 ---
@@ -9,7 +9,10 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(tidyr)
 library(kableExtra)
+library(ggplot2)
+library(dplyr)
 ```
    
 <!-- (2) You can leave this introduction as-is -->
@@ -18,41 +21,98 @@ Based upon anecdotal evidence (personal experience), Dr. Franklund believes that
 
 <!-- (3) Briefly describe what data you collected, how, when, and where you collected it, and the file name and format of your dataset. -->
 ## Procedure
-
+At 6pm on a Wednesday evening in (August 2020), I collected 100 observations of vehicles at the Meijer parking lot in Hudsonville, MI. The observations were summarized in a data table indicating the vehicle type, make, color, and whether or not they had stickers on the vehicle. 
 
 <!-- (4) Insert an R chunk here to load your dataset into a tibble --> 
-
+```{r Cars Info, echo=FALSE}
+ Cars_Info <- read_csv("~/BIOL390/BIOL390/Assignment 4/car info in excel.csv")
+table <- Cars_Info %>% 
+	group_by(Type, Sticker) %>% 
+	summarize(Number = n()) %>% 
+	arrange(desc(Number))
+```
+	
 
 ## Results
 
 ### Window/bumper sticker frequency compared to vehicle type
 <!-- (5) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by type -->
+```{r, echo=FALSE}
+knitr::kable(table, caption = "**Table 1:** Number of each type of car with and without stickers.") %>% kable_styling(full_width = F)
+```
 
+```{r, echo=FALSE,  fig.cap="**Figure 1:** A plot of Sticker Presence vs Vehicle Type"}
+ggplot(table, aes(x=Type, y=Number, z = Sticker, fill = Sticker)) +
+	geom_bar(position = "dodge", stat = "summary", fun="mean", color = "white") 
+```
 
 <!-- (6) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
-
+	The most common type of car is the SUV, with sedans as the next most common. Hatchbacks and minivans were the least common, and pickup trucks fell in the middle. This leads to the question: Does type have an effect on sticker presence? The following one-way ANOVA analysis gives us some indication of that. Since the P-Value is greater than 0.05, we can conclude that there is a connection between vehicle type and sticker presence.
 
 <!-- (7) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car type. --> 
+```{r, echo=FALSE}
+anova_one_way_type <- aov(Sticker ~ Type, Cars_Info)
+summary(anova_one_way_type)
+```
 
 ### Window/bumper sticker frequency compared to vehicle make
 <!-- (8) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by make. -->
+```{r, echo=FALSE}
+table2 <- Cars_Info %>% 
+    group_by(Make, Sticker) %>% 
+    summarize(Number = n()) %>% 
+    arrange(desc(Number))
 
+knitr::kable(table2, caption = "**Table 2:** Number of each make of car") %>% kable_styling(full_width = F)
+```
+
+```{r, echo=FALSE, fig.cap= "**Figure 2:** Make of car vs Sticker presence"}
+ggplot(table2, aes(x=Make, y=Number, z = Sticker, fill = Sticker)) +
+	geom_bar(position = "dodge", stat = "summary", fun="mean", color = "white") +
+	theme(axis.text.x = element_text(angle = 60, hjust = 1))
+```
 
 <!-- (9) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
+
+Based on the figure above and the ANOVA analysis below, it appears there may be a slight significant correlation  between vehicle make and whether or not the vehicle has a sticker. Toyotas, Jeeps, VWs, and Subarus had high percentages of vehicles with stickers, while certain makes like Audi, BMW, Cadillac, and Lexus amongst others had none. 
 
 
 <!-- (10) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car make. --> 
 
+```{r, echo=FALSE}
+anova_one_way_make <- aov(Sticker ~ Make, table2)
+summary(anova_one_way_make)
+```
+
 ### Window/bumper sticker frequency compared to vehicle color
 <!-- (11) Insert an R chunk here to analyze and plot the portion of vehicles with stickers by color. -->
+```{r, echo=FALSE}
+table_3 <- Cars_Info %>% 
+    group_by(Color, Sticker) %>% 
+    summarize(Number = n()) %>% 
+    arrange(desc(Number))
+
+knitr::kable(table_3, caption = "**Table 3:** Number of each color of car and if it has a sticker") %>% kable_styling(full_width = F)
+```
+
+
+```{r, echo=FALSE, fig.cap= "**Figure 3:** Color of car vs Sticker presence"}
+ggplot(table_3, aes(x=Color, y= Number, z = Sticker, fill = Sticker)) +
+	geom_bar(position = "dodge", stat = "summary", fun="mean", color = "white") +
+	theme(axis.text.x = element_text(angle = 60, hjust = 1))
+```
 
 
 <!-- (12) Write a few sentences using markdown to summarize the plot above and the ANOVA analysis that follows. --> 
-
+When cmparing vehicle color to whether or not the vehicle has stickers, there does not seem to be a significant correlation.
 
 <!-- (13) Insert an R chunk here to perform a one-way ANOVA analysis comparing sticker presence vs. car color. --> 
-
+```{r, echo=FALSE}
+anova_one_way_color <- aov(Number ~ Sticker, table_3)
+summary(anova_one_way_color)
+```
 
 
 ## Conclusions
 <!-- (14) Wrap up your assignment with a brief discussion of what you found. Did you find any evidence to support Dr. Franklund's initial hypothesis? How do you interpret your findings? --> 
+Based on the data gathered, the evidence supports the hypothesis that vehicle type is connected to whether or not a vehicle will have a sticker. SUVs had a significantly higher portion of vehicles with stickers than any other vehicle type.

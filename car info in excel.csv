@@ -1,0 +1,101 @@
+Type,Make,Color,Sticker
+Hatchback,Audi,black,FALSE
+Hatchback,Ford,black,FALSE
+Hatchback,Ford,green,TRUE
+Hatchback,Subaru,green,TRUE
+Hatchback,Subaru,green,FALSE
+Hatchback,Chevy,white,FALSE
+Minivan,Ford,blue,FALSE
+Minivan,Kia,grey,FALSE
+Minivan,Chrysler,red,FALSE
+Minivan,Dodge,red,FALSE
+Minivan,Dodge,red,TRUE
+Minivan,Dodge,red,FALSE
+Minivan,Dodge,white,FALSE
+Pickup Truck,Chevy,blue,FALSE
+Pickup Truck,Chevy,blue,FALSE
+Pickup Truck,Chevy,grey,FALSE
+Pickup Truck,Ford,grey,FALSE
+Pickup Truck,Toyota,grey,TRUE
+Pickup Truck,Chevy,red,FALSE
+Pickup Truck,Ford,red,FALSE
+Pickup Truck,GMC,red,FALSE
+Pickup Truck,Ford,tan,FALSE
+Pickup Truck,Dodge,white,FALSE
+Pickup Truck,Ford,white,FALSE
+Pickup Truck,GMC,white,FALSE
+Pickup Truck,Honda,white,FALSE
+Pickup Truck,Nissan,white,FALSE
+Sedan,Chevy,black,FALSE
+Sedan,Honda,black,FALSE
+Sedan,Nissan,black,FALSE
+Sedan,Toyota,black,TRUE
+Sedan,Buick,blue,TRUE
+Sedan,Honda,blue,FALSE
+Sedan,Subaru,blue,FALSE
+Sedan,Chevy,gold,TRUE
+Sedan,Chrysler,gold,FALSE
+Sedan,Lexus,gold,FALSE
+Sedan,Mercury,gold,FALSE
+Sedan,BMW,grey,FALSE
+Sedan,BMW,grey,FALSE
+Sedan,Chevy,grey,FALSE
+Sedan,Chevy,grey,FALSE
+Sedan,Chrysler,grey,FALSE
+Sedan,Ford,grey,FALSE
+Sedan,Ford,grey,FALSE
+Sedan,Mazda,grey,FALSE
+Sedan,Tesla,grey,FALSE
+Sedan,Honda,lime green,FALSE
+Sedan,Ford,red,FALSE
+Sedan,Subaru,red,TRUE
+Sedan,Chevy,silver,FALSE
+Sedan,Ford,silver,FALSE
+Sedan,Honda,silver,TRUE
+Sedan,Honda,silver,TRUE
+Sedan,Honda,silver,FALSE
+Sedan,BMW,white,FALSE
+Sedan,Chevy,white,TRUE
+Sedan,Chevy,white,FALSE
+SUV,Chevy,black,TRUE
+SUV,Chevy,black,FALSE
+SUV,Ford,black,FALSE
+SUV,GMC,black,FALSE
+SUV,Kia,black,FALSE
+SUV,Lexus,black,FALSE
+SUV,Toyota,black,FALSE
+SUV,VW,black,TRUE
+SUV,Buick,blue,FALSE
+SUV,Jeep,blue,TRUE
+SUV,Cadillac,grey,FALSE
+SUV,Chevy,grey,TRUE
+SUV,Dodge,grey,FALSE
+SUV,GMC,grey,FALSE
+SUV,GMC,grey,FALSE
+SUV,Honda,grey,FALSE
+SUV,Honda,grey,FALSE
+SUV,Jeep,grey,TRUE
+SUV,Jeep,grey,TRUE
+SUV,Toyota,grey,FALSE
+SUV,Jeep,lime green,TRUE
+SUV,Jeep,orange,FALSE
+SUV,Jeep,purple,FALSE
+SUV,Chevy,red,TRUE
+SUV,GMC,red,FALSE
+SUV,Kia,red,TRUE
+SUV,Saturn,red,TRUE
+SUV,Toyota,red,FALSE
+SUV,Ford,silver,FALSE
+SUV,GMC,silver,FALSE
+SUV,Honda,silver,TRUE
+SUV,Jeep,silver,FALSE
+SUV,Jeep,silver,FALSE
+SUV,Kia,silver,TRUE
+SUV,Lincoln,silver,TRUE
+SUV,Subaru,silver,FALSE
+SUV,GMC,tan,TRUE
+SUV,Buick,white,TRUE
+SUV,Buick,white,FALSE
+SUV,Jeep,white,FALSE
+SUV,Jeep,white,FALSE
+SUV,VW,white,TRUE
